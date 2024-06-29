@@ -29,7 +29,7 @@ def replace_min_max(item):
 def add_new_ammo_entries(item):
     new_entries = [
         {
-            "ClassName": "Ammo_545x39",
+            "ClassName": "Ammo_308Win",
             "Chance": 0.65,
             "Quantity": {
                 "Min": 0.3,
@@ -44,7 +44,7 @@ def add_new_ammo_entries(item):
             ]
         },
         {
-            "ClassName": "AmmoBox_545x39_20Rnd",
+            "ClassName": "AmmoBox_308Win_20Rnd",
             "Chance": 0.33,
             "Quantity": {
                 "Min": 0.0,
@@ -150,8 +150,8 @@ def process_multiple_files(input_directory, output_directory, process_functions)
                     print(f"Warning: Validation failed for {new_file_path}")
 
 # Configuration
-input_directory = r"C:\Users\xxx\OneDrive\Documents\DayZ Loadouts\modify\input"
-output_directory = r"C:\Users\xxx\OneDrive\Documents\DayZ Loadouts\modify\output"
+input_directory = r"C:\Users\andre\OneDrive\Documents\DayZ Loadouts\modify\input"
+output_directory = r"C:\Users\andre\OneDrive\Documents\DayZ Loadouts\modify\output"
 
 # Set these flags to True for the operations you want to perform
 do_replace_min_max = False
