@@ -7,17 +7,18 @@ def process_json_file(file_path):
         content = json.load(file)
     return flatten_json(content, file_path)
 
-def flatten_json(data, file_path, parent_element=''):
+def flatten_json(data, file_path, parent_element='', slot_name='none'):
     rows = []
     if isinstance(data, dict):
         for key, value in data.items():
             if key == 'ClassName':
-                rows.append({'filename': file_path, 'className': value, 'parent-element': parent_element})
-            else:
-                rows.extend(flatten_json(value, file_path, parent_element=key))
+                rows.append({'filename': file_path, 'className': value, 'parent-element': parent_element, 'slotName': slot_name})
+            elif key == 'SlotName':
+                slot_name = value
+            rows.extend(flatten_json(value, file_path, parent_element=key, slot_name=slot_name))
     elif isinstance(data, list):
         for index, element in enumerate(data):
-            rows.extend(flatten_json(element, file_path, parent_element=f"{parent_element}[{index}]"))
+            rows.extend(flatten_json(element, file_path, parent_element=f"{parent_element}[{index}]", slot_name=slot_name))
     return rows
 
 def main():
@@ -32,7 +33,7 @@ def main():
                 all_rows.extend(process_json_file(file_path))
 
     with open(output_csv, 'w', newline='') as csvfile:
-        fieldnames = ['filename', 'className', 'parent-element']
+        fieldnames = ['filename', 'className', 'parent-element', 'slotName']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(all_rows)
