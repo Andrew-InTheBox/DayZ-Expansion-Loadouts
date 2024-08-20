@@ -17,9 +17,9 @@ def replace_min_max(item):
         if 'ClassName' in item and 'ammo' in item['ClassName'].lower() and 'box' not in item['ClassName'].lower():
             if 'Quantity' in item:
                 if 'Min' in item['Quantity']:
-                    item['Quantity']['Min'] = 0.3
+                    item['Quantity']['Min'] = 0.2
                 if 'Max' in item['Quantity']:
-                    item['Quantity']['Max'] = 0.5
+                    item['Quantity']['Max'] = 0.4
         for key, value in item.items():
             replace_min_max(value)
     elif isinstance(item, list):
@@ -150,12 +150,12 @@ def process_multiple_files(input_directory, output_directory, process_functions)
                     print(f"Warning: Validation failed for {new_file_path}")
 
 # Configuration
-input_directory = r"C:\Users\andre\OneDrive\Documents\DayZ Loadouts\modify\input"
+input_directory = r"C:\Users\andre\OneDrive\Documents\DayZ Loadouts\modify\input\Vanilla"
 output_directory = r"C:\Users\andre\OneDrive\Documents\DayZ Loadouts\modify\output"
 
 # Set these flags to True for the operations you want to perform
-do_replace_min_max = False
-do_add_new_ammo_entries = True
+do_replace_min_max = True
+do_add_new_ammo_entries = False
 
 # Create a list of functions to apply based on the flags
 process_functions = []

@@ -30,7 +30,7 @@ This Python script processes and modifies DayZ loadout JSON files. It can adjust
 
 3. Run the script:
     ```bash
-    python dayz_loadout_processor.py
+    python modify.py
     ```
 
 ## Functions
